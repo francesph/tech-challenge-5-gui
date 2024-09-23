@@ -17,12 +17,19 @@ let x2, y2, velX2, velY2;
 let j3;
 let x3, y3, velX3, velY3;
 
+// //snow
+// var w = window.innerWidth;
+// var h = window.innerHeight;
+// let p = -1200;
+// let snowflakes = 400;
+
+
 let gui;
 let diameterSlider, diameterSlider2, diameterSlider3;
 //===================================================================================
 function setup() {
   createCanvas(450, 550);
-  strokeWeight(1);
+  // let q = frameRate(5); //snowfall speed
 
   gui = createGui();
   diameterSlider = createSlider("Pink", 100,450,100,20,20,43);
@@ -49,11 +56,13 @@ function setup() {
   y3 = 100;
   velX3 = 0;
   velY3 = 0;  
+  
 }
 //=======================================================================================
 function draw() {
   background("#d7f0f0");
   noStroke();
+
 //christmas tree
 
 //trunk
@@ -87,10 +96,22 @@ function draw() {
 
   fill("#a0e364"); //light green
   circle(254,258,30);
+  
+  // //snow
+  // fill("white");
+  // for (let s = 0; s < snowflakes; s++) {
+  //   circle(random(width), p + random(1200), random(1, 6));
+  // }
+  // p += 20;
 
-  drawGui();
+  // if (p > 0) {
+  //   p = -600;
+  // }
   
 //--------------------------------------------------------------
+  drawGui();
+ 
+
 
 if (bulb1.isChanged) {
   print(bulb1.label + " = " + bulb1.val);
@@ -121,6 +142,8 @@ velX3 += j3.valX;
 velY3 += j3.valY;
 fill("purple");
 circle(100 + velX3, 270 + velY3, 30); //bottom
+
+
 
   // labels
   fill("black");
