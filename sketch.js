@@ -96,6 +96,9 @@ function draw() {
 
   fill("#a0e364"); //light green
   circle(254,258,30);
+
+  fill("#f5ffff");
+  rect(0,400,700,200)
   
   // //snow
   // fill("white");
