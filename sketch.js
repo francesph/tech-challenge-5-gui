@@ -17,11 +17,11 @@ let x2, y2, velX2, velY2;
 let j3;
 let x3, y3, velX3, velY3;
 
-// //snow
-// var w = window.innerWidth;
-// var h = window.innerHeight;
-// let p = -1200;
-// let snowflakes = 400;
+//snow
+var w = window.innerWidth;
+var h = window.innerHeight;
+let p = -1200;
+let snowflakes = 400;
 
 
 let gui;
@@ -29,7 +29,7 @@ let diameterSlider, diameterSlider2, diameterSlider3;
 //===================================================================================
 function setup() {
   createCanvas(450, 550);
-  // let q = frameRate(5); //snowfall speed
+  let q = frameRate(5); //snowfall speed
 
   gui = createGui();
   diameterSlider = createSlider("Pink", 100,450,100,20,20,43);
@@ -100,16 +100,16 @@ function draw() {
   fill("#f5ffff");
   rect(0,400,700,200)
   
-  // //snow
-  // fill("white");
-  // for (let s = 0; s < snowflakes; s++) {
-  //   circle(random(width), p + random(1200), random(1, 6));
-  // }
-  // p += 20;
+  //snow
+  fill("white");
+  for (let s = 0; s < snowflakes; s++) {
+    circle(random(width), p + random(1200), random(1, 6));
+  }
+  p += 20;
 
-  // if (p > 0) {
-  //   p = -600;
-  // }
+  if (p > 0) {
+    p = -600;
+  }
   
 //--------------------------------------------------------------
   drawGui();
