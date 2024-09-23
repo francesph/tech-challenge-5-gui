@@ -1,7 +1,13 @@
-let bulb1 = 55; //starting diameter
+//3 resizeable lights
+let d = 30;
+let d2 = 15
+let d3 = 27
+//3 moving lights:
+let bulb1 = 55;
 let bulb2 = 55;
 let bulb3 = 55;
 
+//joysticks for the 3 lights:
 let j;
 let x, y, velX, velY;
 
@@ -12,40 +18,39 @@ let j3;
 let x3, y3, velX3, velY3;
 
 let gui;
-let diameterSlider, diameterSlider2 /*diameterSlider3*/;
-
+let diameterSlider, diameterSlider2, diameterSlider3;
+//===================================================================================
 function setup() {
   createCanvas(450, 550);
   strokeWeight(1);
 
   gui = createGui();
+  diameterSlider = createSlider("Pink", 100,450,100,20,20,43);
+  diameterSlider2 = createSlider("Blue", 100,480,100,20,15,35);
+  diameterSlider3 = createSlider("Orange",100,510,100,20,15,35)
 
-  //diameter slider
-  diameterSlider = createSlider("bulb1", /*position on (x,y)*/50,440,/*slider length*/100,20,/*diameter range:*/10,55);
-  diameterSlider.onChange = diameterSliderChange;
-  j = createJoystick("red", 190,450,65,65,-1,1,1,-1);
+  j = createJoystick("red", 240,480,45,45,-1,1,1,-1);
   x = 300;
   y = 100;
   velX = 0;
   velY = 0;  
 //=============================================================================================
-  diameterSlider2 = createSlider("bulb2",50,470,100,20,10,55);
-  diameterSlider2.onChange = diameterSliderChange;
-  j2 = createJoystick("yellow", 270,450,65,65,-1,1,1,-1);
+
+
+  j2 = createJoystick("yellow", 305,480,45,45,-1,1,1,-1);
   x2 = 300;
   y2 = 100;
   velX2 = 0;
   velY2 = 0;  
+//======================================================================================
 
-  diameterSlider3 = createSlider("bulb3",50,500,100,20,10,55);
-  diameterSlider3.onChange = diameterSliderChange;
-  j3 = createJoystick("purple", 350,450,65,65,-1,1,1,-1);
+  j3 = createJoystick("purple", 370,480,45,45,-1,1,1,-1);
   x3 = 300;
   y3 = 100;
   velX3 = 0;
   velY3 = 0;  
 }
-
+//=======================================================================================
 function draw() {
   background("#d7f0f0");
   noStroke();
@@ -69,24 +74,24 @@ function draw() {
 
   //lights
   fill("pink");
-  circle(269,200, 25);
+  circle(269,200,diameterSlider.val);
 
   fill("blue");
-  circle(229,321, 30);
+  circle(229,321, diameterSlider2.val);
 
   fill("white");
   circle(320,310,25);
 
   fill("orange");
-  circle(310,260,27);
+  circle(310,260,diameterSlider3.val);
 
-  fill("#a0e364");
+  fill("#a0e364"); //light green
   circle(254,258,30);
-  
+
   drawGui();
   
-  
 //--------------------------------------------------------------
+
 if (bulb1.isChanged) {
   print(bulb1.label + " = " + bulb1.val);
 }
@@ -119,16 +124,15 @@ circle(100 + velX3, 270 + velY3, 30); //bottom
 
   // labels
   fill("black");
-  text(j.label, 214, 445);
-  text(j2.label,285,445);
-  text(j3.label,365,445);
+  text(j.label, 254, 470); //red
+  text(j2.label,310,470); //yellow
+  text(j3.label,377,470);//purple
+
+  text(diameterSlider.label, 60, 463)
+  text(diameterSlider2.label, 60, 493)
+  text(diameterSlider3.label, 45, 523)
 }
 //--------------------------------------------------------------------
 function touchMoved() {
   return false;
-}
-function diameterSliderChange() {
-  bulb1 = diameterSlider.val;
-  bulb2 = diameterSlider2.val;
-  bulb3 = diameterSlider3.val;
 }
